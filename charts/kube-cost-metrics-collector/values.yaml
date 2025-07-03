@@ -1,0 +1,76 @@
+prometheus:
+  kube-state-metrics:
+    releaseLabel: true
+    metricLabelsAllowlist:
+      - endpoints=[*]
+      - jobs=[*]
+      - namespaces=[*]
+      - nodes=[*]
+      - pods=[*]
+      - services=[*]
+    metricAnnotationsAllowList:
+      - endpoints=[*]
+      - jobs=[*]
+      - namespaces=[*]
+      - nodes=[*]
+      - pods=[*]
+      - services=[*]
+
+  serviceAccounts:
+    alertmanager:
+      create: false
+
+  kubeStateMetrics:
+    enabled: true
+
+  prometheus-node-exporter:
+    enabled: true
+    hostNetwork: false
+
+  prometheus-pushgateway:
+    enabled: true
+    persistentVolume:
+      enabled: false
+
+  alertmanager:
+    enabled: false
+
+  server:
+    remote_write:
+    # CloudTuner target skeleton. Target also includes tls and auth settings, extra headers and so on
+    - url: https://dashboard.cloudtuner.ai/storage/api/v2/write
+      name: cloudtuner
+
+    # CloudTuner Kubernetes data source id
+    dataSourceId: null
+    # Username which is used on CloudTuner Kubernetes data source registration
+    username: null
+    # Password which is used on CloudTuner Kubernetes data source registration
+    password: null
+    # Remote write CloudTuner target tls CA certificate file
+    caFile:
+
+    configMapOverrideName: prometheus-server-config
+    persistentVolume:
+      enabled: false
+    defaultFlagsOverride:
+    - --enable-feature=agent
+    - --config.file=/etc/config/prometheus.yml
+    - --web.enable-lifecycle
+    extraConfigmapMounts:
+    # Config map with CA cert file
+    - name: cert-config
+      mountPath: /etc/cloudtuner/ssl
+      configMap: prometheus-server-cert-config
+      subPath: ""
+      readOnly: true
+    extraSecretMounts:
+    # Secret with password file
+    - name: password-secret
+      mountPath: /etc/cloudtuner/auth
+      subPath: ""
+      secretName: prometheus-server-password-secret
+      readOnly: true
+  serverFiles:
+    prometheus.yml:
+      rule_files: []

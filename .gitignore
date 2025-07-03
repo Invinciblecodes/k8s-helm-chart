@@ -1,0 +1,18 @@
+*.lock
+
+# Various IDEs
+.project
+.idea/
+*.tmproj
+.vscode/
+
+values-local.yaml
+values-production.yaml
+README-deployment.md
+
+install-local.sh
+install-production.sh
+
+SOLUTIONS.md
+
+.claude
