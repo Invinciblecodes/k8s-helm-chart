@@ -9,7 +9,7 @@ dependencies:
     repository: https://prometheus-community.github.io/helm-charts
   - name: kube-service-selectors
     version: "1.0.1"
-    repository: https://hystax.github.io/helm-charts
+    repository: https://invinciblecodes.github.io/k8s-helm-chart
 maintainers:
-  - name: hystax
-    email: info@hystax.com
+  - name: cloudtuner
+    email: contact@cloudtuner.ai
