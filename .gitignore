@@ -16,3 +16,5 @@ install-production.sh
 SOLUTIONS.md
 
 .claude
+charts/kube-service-selectors/README.md
+charts/kube-cost-metrics-collector/README.md
