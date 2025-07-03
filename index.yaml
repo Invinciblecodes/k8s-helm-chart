@@ -1,0 +1,23 @@
+apiVersion: v1
+entries:
+  kube-cost-metrics-collector:
+  - apiVersion: v2
+    created: "2025-07-03T18:33:17.973494+05:30"
+    dependencies:
+    - name: prometheus
+      repository: https://prometheus-community.github.io/helm-charts
+      version: 17.0.2
+    - name: kube-service-selectors
+      repository: https://invinciblecodes.github.io/k8s-helm-chart
+      version: 1.0.1
+    description: CloudTuner Kubernetes metrics collector.
+    digest: e7f14b31917887c30437bb6de457d2f56a852d3d58f1379a2f47b8879ce194ca
+    maintainers:
+    - email: contact@cloudtuner.ai
+      name: cloudtuner
+    name: kube-cost-metrics-collector
+    type: application
+    urls:
+    - https://invinciblecodes.github.io/k8s-helm-chart/kube-cost-metrics-collector-0.1.2.tgz
+    version: 0.1.2
+generated: "2025-07-03T18:33:17.969413+05:30"
